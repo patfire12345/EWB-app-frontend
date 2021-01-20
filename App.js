@@ -1,15 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import FlatButton from './button.js';
 import { StyleSheet, Text, View } from 'react-native';
-import Login from './login.js';
+import Navigator from './routes/homeStack';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Login />
-      <StatusBar style="auto" />
-    </View>
+    <Navigator />
   );
 }
 

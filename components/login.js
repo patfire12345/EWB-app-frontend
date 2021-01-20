@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { View,Text,TextInput,Keyboard,ScrollView } from 'react-native';
-import FlatButton from "./button.js";
+// import env from '../env';
+import FlatButton from "../shared/button";
 
 export default function Login({navigation}) {
 
@@ -33,7 +34,6 @@ export default function Login({navigation}) {
                 verified: true,
                 email: user.userDetails.email,
                 firstName: user.userDetails.firstName,
-                pets: user.userDetails.pets,
             }
 
         } catch(error) {
@@ -45,8 +45,16 @@ export default function Login({navigation}) {
         }
     }
 
-    const login = (email,password) => {
-        verifyLogin(email,password);
+    const login = async (email,password) => {
+
+        const user = await verifyLogin(email,password);
+
+        if (user.verified) {
+            navigation.replace("Home", {
+                userState: user,
+                email: user.email,
+            })
+        }
     }
 
     return (
@@ -65,8 +73,8 @@ export default function Login({navigation}) {
             />
             {/* <Text>{username}</Text>
             <Text>{password}</Text> */}
-            <FlatButton text="Login" onPress={() => login()}/>
-            <FlatButton text="Register" />
+            <FlatButton text="Login" onPress={() => login(username,password)}/>
+            <FlatButton text="Register" onPress={() => navigation.navigate("Register")}/>
         </View>
     )
 }
