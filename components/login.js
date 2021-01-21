@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { View,Text,TextInput,Keyboard,ScrollView } from 'react-native';
-// import env from '../env';
+import {IP} from '../config'
 import FlatButton from "../shared/button";
 
 export default function Login({navigation}) {
