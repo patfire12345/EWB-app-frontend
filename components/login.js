@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { View,Text,TextInput,Keyboard,ScrollView } from 'react-native';
-import {IP} from '../config'
+import config from '../config'
 import FlatButton from "../shared/button";
 
 export default function Login({navigation}) {
@@ -8,9 +8,12 @@ export default function Login({navigation}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const IP = config.IP;
+
     const verifyLogin = async (email,password) => {
         try {
-            const response = await fetch(IP+"/login", 
+
+            const response = await fetch(IP + "/login", 
                 {
                 method: "POST", 
                 headers: {
@@ -26,8 +29,6 @@ export default function Login({navigation}) {
             }
             
             const user = await response.json();
-
-            console.log("Logged in");
             
             return {
                 user: user,
@@ -71,9 +72,7 @@ export default function Login({navigation}) {
                 placeholder = "Password"
                 secureTextEntry = {true}
             />
-            {/* <Text>{username}</Text>
-            <Text>{password}</Text> */}
-            <FlatButton text="Login" onPress={() => login(username,password)}/>
+            <FlatButton text="Login" onPress={async () => await login(username,password)}/>
             <FlatButton text="Register" onPress={() => navigation.navigate("Register")}/>
         </View>
     )

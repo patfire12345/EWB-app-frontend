@@ -40,7 +40,6 @@ export default function Register({navigation}) {
 
     return (
         <View>
-            {/* <Text>Sustainable Practices App</Text> */}
             <TextInput 
                 value = {username}
                 onChangeText={(text) => setUsername(text)}
@@ -62,11 +61,8 @@ export default function Register({navigation}) {
                 onChangeText={(text) => setLastName(text)}
                 placeholder = "Last Name"
             />
-            {/* <Text>{username}</Text>
-            <Text>{password}</Text> */}
-            <Text>{IP}</Text>
-            <FlatButton text="Sign up" onPress={() => {
-                addInfo(username,password,firstName,lastName);
+            <FlatButton text="Sign up" onPress={async () => {
+                await addInfo(username,password,firstName,lastName);
                 navigation.goBack();
             }}/>
         </View>
