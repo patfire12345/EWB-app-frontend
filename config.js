@@ -1,4 +1,4 @@
-import {IP, na} from 'react-native-dotenv'
+import {IP, nac} from 'react-native-dotenv'
 
 export default {
     IP

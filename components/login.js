@@ -72,6 +72,8 @@ export default function Login({navigation}) {
                 placeholder = "Password"
                 secureTextEntry = {true}
             />
+
+            <Text>{IP}</Text>
             <FlatButton text="Login" onPress={async () => await login(username,password)}/>
             <FlatButton text="Register" onPress={() => navigation.navigate("Register")}/>
         </View>
