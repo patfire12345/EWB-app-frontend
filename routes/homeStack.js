@@ -5,7 +5,7 @@ import Login from '../components/login';
 import Home from '../components/home';
 import Register from '../components/register';
 import { createAppContainer } from 'react-navigation';
-import Find_a_Water_Fountain from '../components/home_page_buttons/Find_a_Water_Fountain';
+import Find_a_Water_Fountain from '../components/home_page_buttons/find_a_water_fountain';
 import About_Us from '../components/home_page_buttons/about_us';
 import Leaderboard from '../components/home_page_buttons/leaderboard';
 
