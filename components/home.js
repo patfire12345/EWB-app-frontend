@@ -10,6 +10,9 @@ export default function Home({navigation}) {
         <View>
             <Text>Hello {userState.firstName}!</Text>
             <FlatButton text="Logout" onPress={() => navigation.replace("Login")}/>
+            <FlatButton text="Find a Water Fountain" onPress={() => navigation.navigate("Find_a_Water_Fountain")}/>
+            <FlatButton text="About Us" onPress={() => navigation.navigate("About_Us")}/>
+            <FlatButton text="Leaderboard" onPress={() => navigation.navigate("Leaderboard")}/>
         </View>
         
     )
