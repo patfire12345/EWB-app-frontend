@@ -11,7 +11,9 @@ export default function Home({navigation}) {
             <Text>Hello {userState.firstName}!</Text>
             <FlatButton text="Find a Water Fountain" onPress={() => navigation.navigate("Find_a_Water_Fountain")}/>
             <FlatButton text="About Us" onPress={() => navigation.navigate("About_Us")}/>
-            <FlatButton text="Leaderboard" onPress={() => navigation.navigate("Leaderboard")}/>
+            <FlatButton text="Leaderboard" onPress={() => 
+                navigation.navigate("Leaderboard", 
+                {email: userState.email, score: userState.user.userDetails.score})}/>
             {/* <FlatButton text="Logout" onPress={() => navigation.replace("Login")}/> */}
 
             <FlatButton 
