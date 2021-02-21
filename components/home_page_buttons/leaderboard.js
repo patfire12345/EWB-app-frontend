@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, Alert } from 'react-native';
 import FlatButton from '../../shared/button';
 import config from '../../config'
@@ -9,6 +9,7 @@ export default function Leaderboard({navigation}) {
 
     const currentScore = navigation.getParam("score");
     const userEmail = navigation.getParam("email");
+    const userState = navigation.getParam("userState");
 
     const [score, setScore] = useState(currentScore);
 
@@ -49,11 +50,15 @@ export default function Leaderboard({navigation}) {
 
         const user = await addScore(email,addedScore);
 
-        console.log(user);
-
         setScore(user.newScore);
     }
 
+
+    useEffect(() => {
+        if (currentScore != score) {
+            navigation.replace("Home", {userState, score});
+        }
+    })
 
     return(
         <View>
@@ -62,7 +67,10 @@ export default function Leaderboard({navigation}) {
             </Text>
             <FlatButton 
                 text = "Click this button to gain 5 points"
-                onPress = {() => buttonPress(userEmail, 5)}
+                onPress = {async () => {
+                    await buttonPress(userEmail, 5);
+                    setScore((parseInt(score) + 5).toString());
+                }}
             />
             <FlatButton 
                 text = "Logout"
