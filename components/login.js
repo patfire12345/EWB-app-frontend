@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View,Text,TextInput,Keyboard,ScrollView } from 'react-native';
+import { StyleSheet,View,Text,TextInput,Keyboard,ScrollView } from 'react-native';
 import config from '../config'
 import FlatButton from "../shared/button";
 
@@ -59,22 +59,64 @@ export default function Login({navigation}) {
     }
 
     return (
-        <View>
-            <Text>Sustainable Practices App</Text>
-            <TextInput 
-                value = {username}
-                onChangeText={(text) => setUsername(text)}
-                placeholder = "Username"
-            />
-            <TextInput 
-                value = {password}
-                onChangeText={(text) => setPassword(text)}
-                placeholder = "Password"
-                secureTextEntry = {true}
-            />
+        <ScrollView style={{backgroundColor: "#417123",height: "100%"}}>
+            <View style={styles.background}>
+                <Text style={styles.title}>Sustainable Practices App</Text>
 
-            <FlatButton text="Login" onPress={async () => await login(username,password)}/>
-            <FlatButton text="Register" onPress={() => navigation.navigate("Register")}/>
-        </View>
+                <View style={styles.inputContainer}>
+                    <View style={styles.inputView}>
+                        <Text>Username</Text>
+                        <TextInput 
+                            style={styles.input}
+                            value = {username}
+                            onChangeText={(text) => setUsername(text)}
+                        />
+                    </View>
+
+                    <View>
+                        <Text>Password</Text>
+                        <TextInput 
+                            style={styles.input}
+                            value = {password}
+                            onChangeText={(text) => setPassword(text)}
+                            secureTextEntry = {true}
+                        />
+                    </View>
+                </View>
+
+                <View style={{flex: 1}}>
+                    <FlatButton text="Login" onPress={async () => await login(username,password)}/>
+
+                    <View style={{flex: 1,justifyContent: "flex-end"}}>
+                        <Text style={{textAlign:"center"}}>Don't have an account? Register here!</Text>
+                        <FlatButton text="Register" onPress={() => navigation.navigate("Register")}/>
+                    </View>
+                </View>
+            </View>
+        </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    background: {
+        justifyContent: "space-evenly",
+    },
+    title: {
+        textAlign: "center",
+        fontSize: 30,
+    },
+    inputContainer: {
+        textAlign: "center",
+        alignSelf: "center",
+        margin: 10,
+        padding: 20,
+        flex: 1,
+    },
+    inputView: {
+        
+    },
+    input: {
+        textAlign: "center",
+        backgroundColor: "white"
+    }
+})

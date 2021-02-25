@@ -26,6 +26,11 @@ const styles = StyleSheet.create({
         paddingVertical: 14,
         paddingHorizontal: 10,
         backgroundColor: '#000000',
+        marginLeft: "auto",
+        marginRight: "auto",
+        margin: 10,
+        maxWidth: 300,
+        textAlign: "center",
     },
     buttonText: {
         // color: 'white',
@@ -49,7 +54,6 @@ const styles = StyleSheet.create({
         fontWeight: "normal",
         fontSize: 24,
         lineHeight: 32,
-        display: 'flex',
-        alignItems: 'center',
+        textAlign: 'center',
     }
 })
